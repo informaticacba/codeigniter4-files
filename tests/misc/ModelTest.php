@@ -9,17 +9,7 @@ use Tests\Support\TestCase;
  */
 final class ModelTest extends TestCase
 {
-    /**
-     * @var FileModel
-     */
-    protected $model;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->model = model(FileModel::class); // @phpstan-ignore-line
-    }
+    protected $refreshVfs = true;
 
     public function testAddToUser()
     {

@@ -2,9 +2,7 @@
 
 namespace Tests\Support;
 
-use CodeIgniter\Config\Factories;
 use CodeIgniter\Test\FeatureTestTrait;
-use Tests\Support\Models\UserModel;
 
 /**
  * @internal
@@ -12,22 +10,6 @@ use Tests\Support\Models\UserModel;
 abstract class FeatureTestCase extends TestCase
 {
     use FeatureTestTrait;
-
-    /**
-     * If present, will override application
-     * routes when using call().
-     *
-     * @var \CodeIgniter\Router\RouteCollection
-     */
-    protected $routes;
-
-    /**
-     * Values to be set in the SESSION global
-     * before running the test.
-     *
-     * @var array
-     */
-    protected $session = [];
 
     /**
      * Enabled auto clean op buffer after request call
@@ -39,9 +21,6 @@ abstract class FeatureTestCase extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-
-        // Make sure we use the correct UserModel for permissions
-        Factories::injectMock('models', UserModel::class, new UserModel());
 
         // Make sure everything is published once
         $this->publishAll();
